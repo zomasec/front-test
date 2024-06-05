@@ -1,0 +1,172 @@
+// Base variables for consistent styling and easy maintenance
+$colors: (
+        background: #121212,
+        text: white,
+        link: #e94560,
+        accent: #f3c623,
+        hover: #34495e
+);
+$fonts: (
+        base: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif'
+);
+
+$layout: (
+        container-width: 960px,
+        base-spacing: 20px
+);
+
+// Mixins for common CSS patterns
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin responsive-visibility {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+@mixin animation-fade-in {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  animation: fadeIn 0.8s ease-out;
+}
+
+@mixin pulse {
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  animation: pulse 1.5s infinite;
+}
+
+// Resets and basic styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; // Base font size for accessibility and readability
+}
+
+body {
+  background-color: map-get($colors, background);
+  color: map-get($colors, text);
+  font-family: map-get($fonts, base);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  @include animation-fade-in;
+}
+
+// Element specific resets
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+blockquote, q {
+  quotes: none;
+  &:before, &:after {
+    content: none;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Link styling with hover effects
+a {
+  color: map-get($colors, link);
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s ease-in-out;
+
+  &:hover, &:focus {
+    color: darken(map-get($colors, link), 10%);
+    text-decoration: underline;
+    transform: translateY(-2px);
+  }
+}
+
+// Container and utility styles
+.container {
+  width: 100%;
+  max-width: map-get($layout, container-width);
+  margin: 0 auto;
+  padding: 0 map-get($layout, base-spacing);
+  @include animation-fade-in;
+}
+
+.padding {
+  padding: map-get($layout, base-spacing);
+}
+
+.margin-bottom {
+  margin-bottom: map-get($layout, base-spacing);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  @include flex-center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden-mobile {
+  @include responsive-visibility;
+}
+
+// Additional Styles for Interactive UI Elements
+.button {
+  background-color: map-get($colors, accent);
+  border: none;
+  padding: 10px 15px;
+  color: map-get($colors, text);
+  font-family: map-get($fonts, base);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+
+  &:hover {
+    background-color: lighten(map-get($colors, accent), 10%);
+    transform: scale(1.05);
+  }
+}
+
+.card {
+  background-color: map-get($colors, hover);
+  color: map-get($colors, text);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  @include pulse;
+}

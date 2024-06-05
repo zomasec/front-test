@@ -1,0 +1,25 @@
+// App.scss
+.navbar {
+    background-color: #1a1a2e; // Dark blue background for a stylish look
+    padding: 12px 0; // Slightly more padding for a balanced height
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 3px solid #e94560; // Thicker, vibrant border color
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Subtle shadow for depth
+    transition: all 0.3s ease-in-out; // Smooth transition for hover effects
+
+    .nav-link {
+        color: #ccc; // Soft white color for text
+        text-decoration: none;
+        font-size: 16px;
+        padding: 8px 20px; // Comfortable padding for clickability
+        border-radius: 4px; // Rounded corners for a modern look
+
+        &:hover, &:focus {
+            color: #ffffff; // Bright white on hover
+            background-color: rgba(233, 69, 96, 0.2); // Slight background on hover
+            transform: translateY(-2px); // Lift effect to indicate interactivity
+        }
+    }
+}
