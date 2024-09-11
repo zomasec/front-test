@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const DashboardContainer = styled.div`
     padding: 20px;
     position: relative;
-    color: #333; /* Global text color */
+    color: #4cd5db; /* Global text color */
 `;
 
 const ScanList = styled.div`
@@ -52,7 +52,7 @@ const ModalContent = styled.div`
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: #333; /* Dark text color */
+    color: #4cd5db; /* Dark text color */
 `;
 
 const Form = styled.form`
@@ -65,7 +65,7 @@ const Input = styled.input`
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    color: #333; /* Dark text color for input fields */
+    color: #4cd5db; /* Dark text color for input fields */
 `;
 
 const Select = styled.select`
@@ -73,13 +73,13 @@ const Select = styled.select`
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    color: #333; /* Dark text color for dropdown */
+    color: #4cd5db; /* Dark text color for dropdown */
 `;
 
 const Label = styled.label`
     margin-bottom: 5px;
     font-weight: bold;
-    color: #333; /* Dark text color for labels */
+    color: #4cd5db; /* Dark text color for labels */
 `;
 
 const SubmitButton = styled.button`
@@ -92,7 +92,7 @@ const SubmitButton = styled.button`
 
     &:hover {
         background-color: cyan;
-        color: #333; /* Dark text color on hover */
+        color: #4cd5db; /* Dark text color on hover */
     }
 `;
 
@@ -102,7 +102,7 @@ const ScanItem = styled.div`
     background-color: #f1f1f1;
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    color: #333; /* Dark text color for scan items */
+    color: #4cd5db; /* Dark text color for scan items */
 `;
 
 const Dashboard = () => {
