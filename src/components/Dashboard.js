@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 
 // Container for the entire dashboard
@@ -89,11 +89,35 @@ const SubmitButton = styled.button`
     }
 `;
 
+const ScanItem = styled.div`
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+`;
+
 const Dashboard = () => {
     const [showModal, setShowModal] = useState(false);
+    const [scans, setScans] = useState([{ id: 1, name: 'Scan 1' }, { id: 2, name: 'Scan 2' }]); // initial scans
 
     const openModal = () => setShowModal(true);
     const closeModal = () => setShowModal(false);
+
+    // Efficient rendering with useMemo
+    const renderScans = useMemo(() => {
+        return scans.map(scan => (
+            <ScanItem key={scan.id}>
+                <p>{scan.name}</p>
+            </ScanItem>
+        ));
+    }, [scans]);
+
+    const addNewScan = () => {
+        const newScan = { id: scans.length + 1, name: `Scan ${scans.length + 1}` };
+        setScans([...scans, newScan]);
+        closeModal();
+    };
 
     return (
         <DashboardContainer>
@@ -116,15 +140,13 @@ const Dashboard = () => {
                                 <option value="quick">Quick</option>
                                 <option value="full">Full</option>
                             </Select>
-                            <SubmitButton type="button" onClick={closeModal}>Start Scan</SubmitButton>
+                            <SubmitButton type="button" onClick={addNewScan}>Start Scan</SubmitButton>
                         </Form>
                     </ModalContent>
                 </ModalOverlay>
             )}
             <ScanList>
-                <p>Scan 1</p>
-                <p>Scan 2</p>
-                <p>Scan 3</p>
+                {renderScans}
             </ScanList>
         </DashboardContainer>
     );
